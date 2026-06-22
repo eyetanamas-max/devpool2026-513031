@@ -1,0 +1,243 @@
+/* ===== style.css = หน้าตาทั้งหมดของเว็บ ===== */
+
+/* :root = ตัวแปรสี แก้ที่เดียวเปลี่ยนทั้งเว็บ
+   👉 ชุดนี้คือ "โหมดสว่าง" โทนเขียวของ carbonMICE
+   (อยากปรับเป็นสีแบรนด์จริง แก้ค่าตรงนี้ได้เลย) */
+:root {
+  --green-dark: #14543A;  /* เขียวเข้ม ใช้กับหัวข้อ */
+  --green: #1F9D6B;       /* เขียวหลัก ใช้เน้น/ปุ่ม */
+  --green-light: #6FD3A6; /* เขียวอ่อน */
+  --green-tint: #E3F5EC;  /* เขียวจางมาก */
+  --bg: #F4FAF7;          /* พื้นหลังหน้า */
+  --card: #FFFFFF;        /* พื้นกล่อง */
+  --text: #16261F;        /* ตัวอักษรหลัก */
+  --muted: #5C7268;       /* ตัวอักษรรอง */
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html { scroll-behavior: smooth; } /* คลิกลิงก์ในหน้าแล้วเลื่อนแบบนุ่ม ๆ */
+
+body {
+  font-family: 'IBM Plex Sans Thai', sans-serif;
+  background-color: var(--bg);
+  color: var(--text);
+  line-height: 1.7;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+/* ===== แถบเมนูด้านบน ===== */
+.nav {
+  display: flex;                  /* เรียงโลโก้กับเมนูคนละฝั่ง */
+  align-items: center;
+  justify-content: space-between; /* ดันให้อยู่คนละข้าง */
+  padding: 18px 40px;
+  position: sticky;               /* ติดอยู่บนสุดเวลาเลื่อนหน้า */
+  top: 0;
+  background: var(--bg);
+  z-index: 10;
+}
+.logo {
+  font-family: 'Prompt', sans-serif;
+  font-weight: 700;
+  font-size: 20px;
+  color: var(--green-dark);
+}
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+.nav-links a {
+  text-decoration: none;          /* เอาขีดเส้นใต้ลิงก์ออก */
+  color: var(--muted);
+  font-size: 15px;
+  transition: color 0.2s;
+}
+.nav-links a:hover { color: var(--green); }
+
+/* ===== ส่วนเปิดหน้า (hero) ===== */
+.hero {
+  display: grid;                       /* ใช้ grid แบ่ง 2 คอลัมน์ */
+  grid-template-columns: 1.2fr 1fr;    /* ซ้ายกว้างกว่าขวาเล็กน้อย */
+  gap: 40px;
+  align-items: center;
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 60px 40px;
+}
+.eyebrow {
+  color: var(--green);
+  font-weight: 600;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  font-size: 13px;
+  margin-bottom: 8px;
+}
+.hero-text h1 {
+  font-family: 'Prompt', sans-serif;
+  font-weight: 800;                    /* ตัวหนามากแบบพอร์ตโฟลิโอ */
+  font-size: 52px;
+  line-height: 1.1;
+  color: var(--text);
+}
+.hero-text h1 .accent { color: var(--green); } /* เน้นชื่อด้วยสีเขียว */
+.subrole {
+  color: var(--muted);
+  font-weight: 500;
+  margin-top: 14px;
+}
+.lead {
+  margin-top: 12px;
+  color: var(--text);
+  max-width: 460px;
+}
+/* ปุ่มกลมเลื่อนลง */
+.scroll-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: var(--green);
+  color: #fff;
+  font-size: 22px;
+  text-decoration: none;
+  margin-top: 28px;
+  transition: transform 0.2s;
+}
+.scroll-btn:hover { transform: translateY(4px); } /* ขยับลงตอนชี้ */
+
+/* รูป/วงกลมตัวอักษรฝั่งขวา */
+.hero-photo { display: flex; justify-content: center; }
+.avatar-big {
+  width: 240px;
+  height: 240px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--green), var(--green-light));
+  color: #fff;
+  font-family: 'Prompt', sans-serif;
+  font-size: 80px;
+  font-weight: 800;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ===== ข้อมูล 2 คอลัมน์ ===== */
+.info {
+  display: grid;
+  grid-template-columns: 1fr 1fr;  /* 2 คอลัมน์เท่ากัน */
+  gap: 32px;
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 20px 40px 40px;
+}
+.info-col h3, .follow h3 {
+  font-family: 'Prompt', sans-serif;
+  color: var(--green);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-size: 15px;
+  margin-bottom: 10px;
+}
+.info-col p { color: var(--muted); }
+
+/* ===== กล่องเหตุผล ===== */
+.card {
+  background: var(--card);
+  border-radius: 16px;
+  padding: 28px;
+  max-width: 1000px;
+  margin: 0 auto 24px;
+  box-shadow: 0 6px 24px rgba(20, 84, 58, 0.07);
+}
+.card h2 {
+  font-family: 'Prompt', sans-serif;
+  color: var(--green-dark);
+  font-size: 22px;
+  margin-bottom: 14px;
+  border-left: 4px solid var(--green);
+  padding-left: 12px;
+}
+.reason { display: flex; gap: 12px; margin-bottom: 14px; }
+.reason .num {
+  flex-shrink: 0;
+  width: 28px; height: 28px;
+  border-radius: 50%;
+  background: var(--green-tint);
+  color: var(--green-dark);
+  font-weight: 600;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 14px;
+}
+
+/* ===== ปุ่ม ===== */
+.btn {
+  font-family: 'IBM Plex Sans Thai', sans-serif;
+  background: var(--green);
+  color: #fff;
+  border: none;
+  padding: 9px 18px;
+  border-radius: 999px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: transform 0.15s, background 0.2s;
+}
+.btn:hover { background: var(--green-dark); transform: translateY(-2px); }
+
+.extra { margin-top: 14px; padding-top: 14px; border-top: 1px dashed var(--green-light); }
+.hidden { display: none; }  /* JS เป็นคนเปิด/ปิดคลาสนี้ */
+
+/* ===== ติดต่อ ===== */
+.follow {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 0 40px 40px;
+}
+.social { display: flex; gap: 14px; flex-wrap: wrap; }
+.social-link {
+  text-decoration: none;
+  color: var(--green-dark);
+  border: 1px solid var(--green-light);
+  padding: 8px 18px;
+  border-radius: 999px;
+  font-size: 14px;
+  transition: background 0.2s, color 0.2s;
+}
+.social-link:hover { background: var(--green); color: #fff; }
+
+footer {
+  text-align: center;
+  color: var(--muted);
+  font-size: 14px;
+  padding: 24px;
+}
+
+/* ===== โหมดมืด: พื้นเข้มแบบพอร์ตโฟลิโอ accent เขียว ===== */
+body.dark {
+  --green-dark: #9FE6C4;  /* ในโหมดมืดใช้เขียวอ่อนกับหัวข้อให้อ่านออก */
+  --green: #2BB67E;
+  --green-light: #4F6E5E;
+  --green-tint: #1A2A22;
+  --bg: #0C1310;          /* พื้นดำอมเขียว */
+  --card: #14201A;
+  --text: #EAF3EE;
+  --muted: #93A89D;
+}
+
+/* ===== รองรับมือถือ: จอแคบกว่า 720px ให้เรียงคอลัมน์เป็นแนวตั้ง ===== */
+@media (max-width: 720px) {
+  .hero { grid-template-columns: 1fr; text-align: center; padding: 40px 24px; }
+  .hero-text h1 { font-size: 38px; }
+  .lead { margin-left: auto; margin-right: auto; }
+  .info { grid-template-columns: 1fr; padding: 20px 24px; }
+  .nav { padding: 16px 24px; }
+  .nav-links a { display: none; }   /* ซ่อนลิงก์เมนูบนจอเล็ก เหลือโลโก้กับปุ่มโหมด */
+  .avatar-big { width: 180px; height: 180px; font-size: 60px; }
+}

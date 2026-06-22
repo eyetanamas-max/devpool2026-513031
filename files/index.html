@@ -1,11 +1,121 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="th">
+
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>แนะนำตัว | ฐานะมาศ กันภัย (อาย)</title>
+
+  <!-- ฟอนต์ภาษาไทยจาก Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Thai:wght@400;500;600&family=Prompt:wght@500;600;700;800&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="style.css" />
 </head>
+
 <body>
-  <h1> hello eye </h1>
+
+  <!-- ===== แถบเมนูด้านบน (nav) ===== -->
+  <nav class="nav">
+    <div class="logo">🌿 Portfolio</div>
+    <div class="nav-links">
+      <a href="#about">เกี่ยวกับ</a>
+      <a href="#work">งานที่ทำ</a>
+      <a href="#why">เหตุผล</a>
+      <!-- ปุ่มสลับโหมดสว่าง/มืด (ทำงานด้วย script.js / id เดิม) -->
+      <button class="btn" id="themeBtn">🌙 โหมดมืด</button>
+    </div>
+  </nav>
+
+  <!-- ===== ส่วนเปิดหน้า (hero) แบ่ง 2 คอลัมน์: ข้อความ | รูป ===== -->
+  <header class="hero">
+    <div class="hero-text">
+      <p class="eyebrow">DevPool 2569 · แนะนำตัว</p>
+      <h1>สวัสดีค่ะ<br>ฉันชื่อ <span class="accent">อาย</span></h1>
+      <p class="subrole">วิศวกร ระดับ 5 · ผู้ดูแลแพลตฟอร์ม carbonMICE · การไฟฟ้าส่วนภูมิภาค</p>
+      <p class="lead">
+        วิศวกรที่อยากเข้าใจการสร้างผลิตภัณฑ์ดิจิทัลตั้งแต่ต้นจนจบ
+        และนำทักษะการเขียนโค้ดมาต่อยอดแพลตฟอร์มจัดการคาร์บอนสำหรับงานอีเวนต์
+      </p>
+      <!-- ปุ่มเลื่อนลง: เป็นลิงก์ที่พาไปยังส่วน id="about" (ไม่ต้องใช้ JS) -->
+      <a href="#about" class="scroll-btn" aria-label="เลื่อนลง">↓</a>
+    </div>
+
+    <div class="hero-photo">
+      <!-- ตอนนี้เป็นวงกลมตัวอักษร เปลี่ยนเป็นรูปจริงภายหลังได้ -->
+      <div class="avatar-big">อาย</div>
+    </div>
+  </header>
+
+  <!-- ===== ข้อมูล 2 คอลัมน์: เกี่ยวกับฉัน | งานที่ทำ ===== -->
+  <section class="info">
+    <div class="info-col" id="about">
+      <h3>เกี่ยวกับฉัน</h3>
+      <p>
+        ปัจจุบันเป็นวิศวกร ระดับ 5 สังกัด ผสอ. กวว. ฝวบ. ก.1
+        ของการไฟฟ้าส่วนภูมิภาค สนใจการเชื่อมโยงงานด้านสิ่งแวดล้อม
+        เข้ากับเทคโนโลยีดิจิทัล
+      </p>
+    </div>
+
+    <div class="info-col" id="work">
+      <h3>งานที่ทำ</h3>
+      <p>
+        ดูแลและพัฒนา <strong>carbonMICE</strong> แพลตฟอร์มบริหารจัดการคาร์บอน
+        สำหรับงานอีเวนต์แบบครบวงจร ตั้งแต่วัดและติดตามคาร์บอนฟุตพริ้นท์
+        ชดเชยคาร์บอน ไปจนถึงจัดทำเอกสารขอรับรอง Carbon Neutral Event
+        ตามหลักเกณฑ์ของ อบก. (TGO)
+      </p>
+    </div>
+  </section>
+
+  <!-- ===== เหตุผลที่อยากเข้า DevPool ===== -->
+  <section class="card" id="why">
+    <h2>ทำไมถึงอยากเข้า DevPool</h2>
+
+    <div class="reason">
+      <span class="num">1</span>
+      <p>อยากต่อยอดจากความรู้ที่เคยเรียนใน <strong>Design Pool</strong>
+         มาสู่ทักษะการเขียนโค้ด เพื่อเข้าใจการสร้างผลิตภัณฑ์ดิจิทัลให้ครบวงจรมากขึ้น</p>
+    </div>
+
+    <div class="reason">
+      <span class="num">2</span>
+      <p>หัวใจของ carbonMICE คือ <strong>แพลตฟอร์ม</strong>
+         การที่เจ้าของผลิตภัณฑ์เข้าใจการเขียนโค้ด จะช่วยให้ออกแบบ ตัดสินใจ
+         และสื่อสารกับทีมพัฒนาได้ดีขึ้น</p>
+    </div>
+
+    <div class="reason">
+      <span class="num">3</span>
+      <p>ทักษะนี้นำไปต่อยอดกับ <strong>โปรเจกต์อื่น ๆ ของการไฟฟ้า</strong>
+         ในงานพัฒนาระบบดิจิทัลได้อีกด้วย</p>
+    </div>
+
+    <!-- ปุ่มแสดง/ซ่อนเหตุผลเพิ่มเติม (id เดิม) -->
+    <button class="btn" id="moreBtn" style="margin-top:8px;">อ่านเพิ่มเติม ▾</button>
+    <div class="extra hidden" id="extraBox">
+      <p>นอกจากนี้ยังอยากเป็นวิศวกรที่ <strong>"คุยกับนักพัฒนาได้รู้เรื่อง"</strong>
+         เพื่อเป็นสะพานเชื่อมระหว่างฝั่งงานจริงกับฝั่งเทคโนโลยี
+         และผลักดันการเปลี่ยนผ่านสู่เศรษฐกิจคาร์บอนต่ำได้อย่างเป็นรูปธรรม</p>
+    </div>
+  </section>
+
+  <!-- ===== ติดต่อ ===== -->
+  <section class="follow">
+    <h3>ติดต่อ</h3>
+    <div class="social">
+      <a href="#" class="social-link">GitHub</a>
+      <a href="#" class="social-link">Email</a>
+      <a href="#" class="social-link">LinkedIn</a>
+    </div>
+  </section>
+
+  <footer>
+    สร้างขึ้นสำหรับภารกิจรอบคัดเลือก DevPool 2569 · การไฟฟ้าส่วนภูมิภาค
+  </footer>
+
+  <script src="script.js"></script>
 </body>
 </html>
