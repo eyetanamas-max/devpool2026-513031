@@ -265,33 +265,6 @@ body {
 }
 
 
-/* ปุ่มกลมเลื่อนลง (ลูกศร ↓) */
-.scroll-btn {
-  display: inline-flex;
-  /* inline-flex = เหมือน flex แต่ตัวมันเองจะเป็น inline (อยู่ในบรรทัดข้อความได้)
-     flex ข้างในจะจัดลูกศร ↓ ให้อยู่กลางปุ่มพอดี */
-
-  align-items: center;      /* จัดลูกศรกลางแนวตั้ง */
-  justify-content: center;  /* จัดลูกศรกลางแนวนอน */
-  width: 56px;              /* กว้าง 56px */
-  height: 56px;             /* สูง 56px (กว้าง=สูง เท่ากัน) */
-  border-radius: 50%;       /* มุมมน 50% = ทำให้เป็นวงกลม (เพราะกว้าง=สูง) */
-  background: var(--green); /* พื้นเขียว */
-  color: #fff;              /* ลูกศรสีขาว */
-  font-size: 22px;
-  text-decoration: none;    /* เอาเส้นใต้ลิงก์ออก */
-  margin-top: 28px;
-
-  transition: transform 0.2s;
-  /* transform จะเปลี่ยนแบบค่อย ๆ ใน 0.2 วินาที */
-}
-
-/* เมื่อเอาเมาส์ชี้ → ปุ่มขยับลง 4px (เหมือนกดลง) */
-.scroll-btn:hover { transform: translateY(4px); }
-/* transform: translateY(4px) = เลื่อนลง 4 พิกเซล
-   ค่าบวก = ลง, ค่าลบ = ขึ้น
-   translateX = เลื่อนซ้าย-ขวา */
-
 
 /* รูป/วงกลมฝั่งขวาของ hero */
 .hero-photo { display: flex; justify-content: center; }
