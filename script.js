@@ -1,11 +1,6 @@
 /* =====================================================================
    script.js = ไฟล์ JavaScript ที่ทำให้หน้าเว็บ "โต้ตอบ" กับผู้ใช้ได้
-
-   HTML = โครงสร้าง (กระดูก)
-   CSS = หน้าตา (เสื้อผ้า)
-   JavaScript = พฤติกรรม (การเคลื่อนไหว/โต้ตอบ)
-
-   ไฟล์นี้ถูกเรียกจาก index.html บรรทัด <script src="script.js"></script>
+   ไฟล์นี้ถูกเรียกจาก index.html ด้วย <script src="script.js"></script>
    ===================================================================== */
 
 
@@ -13,67 +8,26 @@
    การโต้ตอบที่ 1: ปุ่มสลับโหมดมืด/สว่าง (Dark Mode Toggle)
    ===================================================================== */
 
-/*
-  document = ตัวแทนของหน้าเว็บทั้งหมด
-  .getElementById('themeBtn') = ไปค้นหา element ที่มี id="themeBtn" ในหน้า HTML
-  แล้วเก็บไว้ในตัวแปรชื่อ themeBtn เพื่อใช้งานต่อ
-
-  💡 ตัวแปร (variable) คืออะไร?
-  คือ "กล่องเก็บของ" ที่เราตั้งชื่อให้ เพื่อเอาของข้างในมาใช้ภายหลัง
-  const = ประกาศตัวแปรที่เปลี่ยนค่าไม่ได้ (คงที่)
-  let = ประกาศตัวแปรที่เปลี่ยนค่าได้
-
-  ที่ใช้ const เพราะ themeBtn ชี้ไปที่ปุ่มตัวเดิมตลอด ไม่เปลี่ยน
-*/
+/* getElementById = ค้นหา element ที่มี id="themeBtn" แล้วเก็บไว้ในตัวแปรเพื่อใช้งานต่อ
+   ใช้ const (ค่าคงที่) เพราะ themeBtn ชี้ไปที่ปุ่มตัวเดิมตลอด ไม่เปลี่ยน
+   (const = เปลี่ยนค่าไม่ได้, let = เปลี่ยนค่าได้) */
 const themeBtn = document.getElementById('themeBtn');
 
 
-/*
-  addEventListener = "ฟังเหตุการณ์"
-  ('click', function() {...}) = เมื่อเกิดเหตุการณ์ 'click' (คลิก) ให้ทำงานในฟังก์ชัน
-
-  💡 ฟังก์ชัน (function) คืออะไร?
-  คือ "ชุดคำสั่ง" ที่รวมไว้ด้วยกัน เรียกใช้เมื่อต้องการ
-  function() {...} = ฟังก์ชันไม่มีชื่อ (anonymous function)
-  ที่จะทำงานก็ต่อเมื่อปุ่มถูกคลิกเท่านั้น
-
-  💡 addEventListener ใช้กับเหตุการณ์อื่นได้ด้วย เช่น:
-  'mouseover' = เมาส์เลื่อนไปวาง
-  'keydown' = กดปุ่มคีย์บอร์ด
-  'submit' = กดส่งฟอร์ม
-*/
+/* addEventListener('click', ...) = "ฟังเหตุการณ์" เมื่อปุ่มถูกคลิก ให้ทำงานในฟังก์ชัน
+   (เหตุการณ์อื่นที่ใช้บ่อย: 'mouseover', 'keydown', 'submit') */
 themeBtn.addEventListener('click', function () {
 
-  /*
-    document.body = เข้าถึง <body> ของหน้า HTML
-    .classList = รายชื่อ class ทั้งหมดของ element นั้น
-    .toggle('dark') = สลับคลาส 'dark'
-      - ถ้า <body> ยังไม่มีคลาส dark → เพิ่มเข้าไป (กลายเป็น <body class="dark">)
-      - ถ้า <body> มีคลาส dark อยู่แล้ว → เอาออก (กลับเป็น <body>)
-
-    พอ <body> มีคลาส dark → CSS ส่วน body.dark {...} จะทำงาน
-    ซึ่งเปลี่ยนตัวแปรสีทั้งหมด → เว็บเปลี่ยนเป็นโหมดมืด
-  */
+  /* classList.toggle('dark') = สลับคลาส 'dark' บน <body> (ไม่มี→เพิ่ม, มี→เอาออก)
+     พอ <body> มีคลาส dark → CSS ส่วน body.dark {...} ทำงาน → เว็บเปลี่ยนเป็นโหมดมืด */
   document.body.classList.toggle('dark');
 
-  /*
-    เปลี่ยนข้อความบนปุ่มให้ตรงกับโหมดปัจจุบัน
-
-    .classList.contains('dark') = เช็กว่ามีคลาส dark อยู่ไหม (ได้ true หรือ false)
-
-    if (...) {...} else {...} = เงื่อนไข
-    ถ้าเป็นจริง (true) → ทำส่วน if
-    ถ้าเป็นเท็จ (false) → ทำส่วน else
-
-    .textContent = ข้อความที่แสดงใน element
-    ใช้กำหนดค่าใหม่ได้ เช่น themeBtn.textContent = 'ข้อความใหม่'
-  */
+  /* เปลี่ยนข้อความบนปุ่มให้ตรงกับโหมดปัจจุบัน
+     classList.contains('dark') = เช็กว่ามีคลาส dark ไหม (true/false) */
   if (document.body.classList.contains('dark')) {
-    /* ตอนนี้เป็นโหมดมืด → แสดงปุ่มว่า "โหมดสว่าง" (เพื่อให้กดกลับไปโหมดสว่างได้) */
-    themeBtn.textContent = '☀️ โหมดสว่าง';
+    themeBtn.textContent = '☀️ โหมดสว่าง';   /* ตอนนี้มืด → ปุ่มให้กดกลับไปสว่าง */
   } else {
-    /* ตอนนี้เป็นโหมดสว่าง → แสดงปุ่มว่า "โหมดมืด" (เพื่อให้กดไปโหมดมืดได้) */
-    themeBtn.textContent = '🌙 โหมดมืด';
+    themeBtn.textContent = '🌙 โหมดมืด';      /* ตอนนี้สว่าง → ปุ่มให้กดไปมืด */
   }
 });
 
@@ -82,34 +36,17 @@ themeBtn.addEventListener('click', function () {
    การโต้ตอบที่ 2: ปุ่มแสดง/ซ่อนเหตุผลเพิ่มเติม (Toggle Content)
    ===================================================================== */
 
-/* หยิบปุ่ม "อ่านเพิ่มเติม" มาเก็บในตัวแปร */
-const moreBtn = document.getElementById('moreBtn');
-
-/* หยิบกล่องเนื้อหาที่ซ่อนอยู่มาเก็บในตัวแปร */
-const extraBox = document.getElementById('extraBox');
+const moreBtn = document.getElementById('moreBtn');     /* ปุ่ม "อ่านเพิ่มเติม" */
+const extraBox = document.getElementById('extraBox');   /* กล่องเนื้อหาที่ซ่อนอยู่ */
 
 
-/*
-  เมื่อปุ่ม moreBtn ถูกคลิก:
-*/
 moreBtn.addEventListener('click', function () {
 
-  /*
-    สลับคลาส 'hidden' บนกล่อง extraBox
-    - ตอนแรก extraBox มีคลาส hidden (ซ่อนอยู่) → toggle จะเอา hidden ออก → กล่องแสดง
-    - กดอีกครั้ง → toggle ใส่ hidden กลับ → กล่องซ่อน
-
-    💡 ทำไมใช้ classList.toggle แทนที่จะเขียน if/else เอง?
-    เพราะ toggle ทำ 2 อย่างในบรรทัดเดียว: เช็กว่ามีหรือยัง + เพิ่ม/ลบ
-    สะดวกกว่าเขียน if (has class) → remove, else → add
-  */
+  /* สลับคลาส 'hidden' บนกล่อง extraBox (มี hidden→ซ่อน, ไม่มี→แสดง)
+     ใช้ toggle เพราะทำ 2 อย่างในบรรทัดเดียว: เช็กว่ามีหรือยัง + เพิ่ม/ลบ */
   extraBox.classList.toggle('hidden');
 
-  /*
-    เปลี่ยนข้อความปุ่มตามสถานะ:
-    - ถ้ากล่องซ่อนอยู่ (มี hidden) → แสดง "อ่านเพิ่มเติม ▾" (ลูกศรลง = กดเพื่อเปิด)
-    - ถ้ากล่องเปิดอยู่ (ไม่มี hidden) → แสดง "ย่อกลับ ▴" (ลูกศรขึ้น = กดเพื่อปิด)
-  */
+  /* เปลี่ยนข้อความปุ่มตามสถานะ (▾ ลูกศรลง=กดเปิด, ▴ ลูกศรขึ้น=กดปิด) */
   if (extraBox.classList.contains('hidden')) {
     moreBtn.textContent = 'อ่านเพิ่มเติม ▾';
   } else {
